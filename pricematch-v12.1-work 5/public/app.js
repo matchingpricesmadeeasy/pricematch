@@ -97,9 +97,11 @@ if(productImage && d.product?.imageUrl) productImage.src = d.product.imageUrl;
 
 document.getElementById("watchButton").classList.remove("hidden");
     loadHistory();
-    if(Array.isArray(d.offers) && d.offers.length){
-      renderRows(d.offers.map(o=>({name:o.retailer,price:o.price,shipping:o.shipping||0,badge:o.matchConfidence>=.98?"Exact match":"Matched product",url:o.url,offerId:o.offerId})));
-    }
+  if(Array.isArray(d.offers) && d.offers.length){
+  renderRows(d.offers.map(o=>({name:o.retailer,price:o.price,shipping:o.shipping||0,badge:o.matchConfidence>=.98?"Exact match":"Matched product",url:o.url,offerId:o.offerId})));
+} else {
+  rowBox.innerHTML = '<div class="history-empty">No live retailer prices are available for this search yet.</div>';
+}
 } catch {
   rowBox.innerHTML = '<div class="history-empty">No live retailer prices are available for this search yet.</div>';
 }

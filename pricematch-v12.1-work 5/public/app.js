@@ -100,8 +100,9 @@ document.getElementById("watchButton").classList.remove("hidden");
     if(Array.isArray(d.offers) && d.offers.length){
       renderRows(d.offers.map(o=>({name:o.retailer,price:o.price,shipping:o.shipping||0,badge:o.matchConfidence>=.98?"Exact match":"Matched product",url:o.url,offerId:o.offerId})));
     }
-  } catch { renderRows(); }
-});
+} catch {
+  rowBox.innerHTML = '<div class="history-empty">No live retailer prices are available for this search yet.</div>';
+}
 
 document.getElementById("priceRange").addEventListener("input", e => {
   document.getElementById("rangeValue").textContent = e.target.value >= 500 ? "$500+" : "$" + e.target.value;

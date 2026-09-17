@@ -1,0 +1,2 @@
+import type {RetailerProvider} from "./types";
+export const demoProvider:RetailerProvider={name:"Demo",async search(i){const t=i.query||i.model||"Sample product";return{provider:"Demo",offers:[["Amazon",199,0,.98],["Walmart",199,0,.97],["Target",204.99,5.99,.95],["Best Buy",209.99,0,.94],["Home Depot",214,0,.90]].map(([r,p,s,c])=>({retailer:r as string,title:t,price:p as number,shipping:s as number,currency:"USD",availability:"in_stock",url:"#",productId:i.asin,matchConfidence:c as number}))}}};

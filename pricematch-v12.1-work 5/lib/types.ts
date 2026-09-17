@@ -1,0 +1,4 @@
+export type ProductInput={query?:string;url?:string;upc?:string;gtin?:string;asin?:string;model?:string};
+export type Product={canonicalId:string;title:string;brand?:string;model?:string;upc?:string;gtin?:string;asin?:string;imageUrl?:string;attributes?:Record<string,string|number|undefined>;matchConfidence:number};
+export type Offer={offerId?:string;retailer:string;title:string;price:number;shipping:number|null;currency:string;availability:"in_stock"|"out_of_stock"|"unknown";url:string;sku?:string;productId?:string;matchConfidence:number;matchReason?:string};
+export type SearchResponse={product:Product|null;offers:Offer[];providers:string[];warnings:string[]};

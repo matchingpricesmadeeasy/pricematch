@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PriceMatch — Matching Prices Made Easy</title>
+  <meta name="description" content="PriceMatch compares the same product across supported retailers. Matching Prices Made Easy.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="nav">
+    <div class="brand"><span class="brand-icon">⌕</span><span>Price<span>Match</span><small>Matching Prices Made Easy</small></span></div>
+    <nav><a class="active" href="#">Home</a><a href="#how">How It Works</a><a href="#about">About</a></nav>
+    <div class="nav-actions"><button class="text-btn" onclick="document.getElementById('dashboard').scrollIntoView({behavior:'smooth'})">♡ My Watchlist</button><button class="text-btn">♙ Sign In</button></div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow">COMPARE BEFORE YOU BUY</div>
+      <h1>Find the lowest price.<br><span>Automatically.</span></h1>
+      <p>Compare the same product across multiple stores in seconds.<br>No more opening 20 tabs. No more guesswork.</p>
+
+      <form id="searchForm" class="search-box">
+        <span class="search-icon">⌕</span>
+        <input id="searchInput" autocomplete="off" placeholder="Paste a product URL, name, UPC, or model number..." />
+        <button type="submit">⌕ &nbsp; Compare Prices</button>
+      </form>
+      <div class="hero-trust"><span>✓ Exact-match confidence</span><span>✓ Landed cost comparison</span><span>✓ Price-drop alerts</span></div>
+
+      <div class="benefits">
+        <div><b>⚡ Real-time prices</b><small>From supported retailers</small></div>
+        <div><b>◈ Exact product matching</b><small>So you get the right item</small></div>
+        <div><b>▣ Includes shipping</b><small>See the true total cost</small></div>
+        <div><b>✓ Trusted retailers</b><small>Amazon, Walmart, Target, Best Buy & more</small></div>
+      </div>
+    </section>
+
+    <section id="results" class="results-section hidden">
+      <div class="crumbs">Home <span>›</span> Search Results</div>
+      <div class="results-layout">
+        <aside class="filters">
+          <h3>Filters</h3>
+          <label>Price Range</label>
+          <div class="range"><input type="range" min="0" max="500" value="500" id="priceRange"></div>
+          <div class="range-values"><span>$0</span><span id="rangeValue">$500+</span></div>
+
+          <label>Retailer</label>
+          <label class="check"><input type="checkbox" checked> Amazon</label>
+          <label class="check"><input type="checkbox" checked> Walmart</label>
+          <label class="check"><input type="checkbox" checked> Target</label>
+          <label class="check"><input type="checkbox" checked> Best Buy</label>
+          <label class="check"><input type="checkbox"> Home Depot</label>
+
+          <label>Availability</label>
+          <label class="check"><input type="checkbox" checked> In Stock</label>
+          <label class="check"><input type="checkbox"> Free Shipping</label>
+
+          <label>Sort By</label>
+          <select id="sortSelect"><option value="price">Lowest Price</option><option value="store">Store</option></select>
+        </aside>
+
+        <div class="results-main">
+          <div class="product-card">
+            <div class="product-image">🎧</div>
+            <div>
+              <small>Apple</small>
+              <h2 id="productName">AirPods Pro (2nd Generation)</h2>
+              <div class="rating">★★★★★ <b>4.8</b> <span>(12,443 reviews)</span></div>
+              <p class="meta">Model: MQD83AM/A &nbsp; • &nbsp; UPC: 194253397167</p>
+              <span class="match">✓ Exact match found</span>
+              <p class="description">Apple AirPods Pro (2nd Generation) with MagSafe Charging Case. Active Noise Cancellation and Transparency mode.</p>
+            </div>
+          </div>
+
+          <div class="compare-head"><h2>Compare Prices</h2><div class="compare-actions"><span>Showing 5 of 5 stores</span><button id="watchButton" class="watch-btn hidden">♡ Watch Price</button></div></div>
+          <div class="table">
+            <div class="table-head"><span>Store</span><span>Price</span><span>Shipping</span><span>Total</span><span>Availability</span><span></span></div>
+            <div id="storeRows"></div>
+          </div>
+          <div id="historySection" class="history-section hidden"><div class="history-title"><div><h2>Price History</h2><p>Track the landed cost over time across the offers we capture.</p></div></div><div id="historyPanel"></div></div><div class="notice">ⓘ Prices and availability can change. PriceMatch shows the latest successful retailer check and identifies the product match confidence.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how" class="how">
+      <h2>How PriceMatch works</h2>
+      <div class="steps">
+        <div><span>1</span><h3>Search</h3><p>Enter a product name, URL, UPC, or model number.</p></div>
+        <div><span>2</span><h3>Match</h3><p>We identify the exact product and filter out near-matches.</p></div>
+        <div><span>3</span><h3>Compare</h3><p>See prices, shipping, stock, and direct purchase links together.</p></div>
+      </div>
+    </section>
+
+    <section id="dashboard" class="dashboard">
+      <div class="dashboard-inner">
+        <div class="section-kicker">YOUR SAVED DEALS</div>
+        <h2>Keep the deals worth watching.</h2>
+        <p class="dashboard-sub">A quick view of products you’re tracking and the price movement that matters.</p>
+        <div class="dash-grid">
+          <div class="dash-card">
+            <h3>Watchlist</h3>
+            <div class="watch-item"><div class="watch-thumb">🎧</div><div><strong>AirPods Pro (2nd Generation)</strong><small>Target: $189.00</small></div><div class="watch-price"><b>$199.00</b><span class="drop">↓ 4.8% this month</span></div></div>
+            <div class="watch-item"><div class="watch-thumb">⌨️</div><div><strong>Keychron Q1 Mechanical Keyboard</strong><small>Target: $139.00</small></div><div class="watch-price"><b>$149.00</b><span class="drop">↓ 6.1% this month</span></div></div>
+            <div class="watch-item"><div class="watch-thumb">🖥️</div><div><strong>27&quot; 4K USB-C Monitor</strong><small>Target: $299.00</small></div><div class="watch-price"><b>$329.99</b><span class="drop">↓ 2.3% this month</span></div></div>
+          </div>
+          <div class="dash-card">
+            <h3>PriceMatch activity</h3>
+            <div class="metric-grid"><div class="metric"><small>Products watched</small><b>3</b></div><div class="metric"><small>Deals found</small><b>12</b></div><div class="metric"><small>Best observed drop</small><b>18%</b></div><div class="metric"><small>Potential savings</small><b>$74</b></div></div>
+            <div class="deal-insight"><span class="price-drop">PRICE DROP</span><br>AirPods Pro are $10 above your target. Keep watching—we’ll surface a new alert when your target is reached.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  <div id="watchlistHint" class="watchlist-hint"><h2>Save deals you care about</h2><p>Watch a product and set a target price. PriceMatch can use these saved targets for future drop notifications once email/push delivery is connected.</p></div></main>
+  <footer class="footer"><div><strong>PriceMatch</strong> — Matching Prices Made Easy.</div><div>Prices are checked from supported retailer sources and may change.</div></footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
